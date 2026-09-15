@@ -69,7 +69,7 @@
 
 #album-art-layer {
     z-index: 1;
-	transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 
 #album-art-transition-layer {
@@ -99,33 +99,33 @@
     width: 100%;
     height: 100%;
     z-index: 1;
-	background-size: cover;
+    background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
 
-	background-blend-mode: overlay; /* Or 'soft-light' for a subtler effect */
+    background-blend-mode: overlay; /* Or 'soft-light' for a subtler effect */
     filter: blur(10px) brightness(0.3) saturate(1.2);
     transform: scale(1.1); /* Slightly zoom in to cover edges when blurred */
 }
 
 #background-layer {
-	transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 
 #background-transition-layer {
-	z-index: 0;
+    z-index: 0;
 }
 
 /* The content sits on top */
 #song-info-wrapper {
     position: relative; /* Keeps it in the document flow */
     z-index: 2;         /* Sits above the background-layer */
-    
+
     /* padding: 1em 1.75em; */
     display: flex;
     flex-direction: column;
     gap: 0.3em;
-    
+
     margin: 0.5em 0em;
 
     flex-grow: 1;
@@ -133,50 +133,51 @@
 }
 
 #track-label {
-	font-size: 1em;
-	font-weight: 600;
+    font-size: 1em;
+    font-weight: 600;
     text-align: var(--text-alignment);
 }
 
 #artist-label {
-	font-size: 0.8em;
-	font-weight: 300;
-	opacity: 0.6;
+    font-size: 0.8em;
+    font-weight: 300;
+    opacity: 0.6;
     text-align: var(--text-alignment);
 }
 
 #progress-container {
-	display: flex;
-	flex-direction: row;
+    display: flex;
+    flex-direction: row;
     align-items: center;
-	gap: 0.2em;
-	margin-top: 0.2em;
+    gap: 0.2em;
+    margin-top: 0.2em;
     gap: 0.5em;
 }
 
 #progress-bar-track {
     width: 100%;
     height: 0.4em;
-	border-radius: 1em;
-	background-color: #ffffff3a;
+    border-radius: 0;
+    background-color: #ffffff3a;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Adds depth */
 }
 
 #progress-bar-fill {
     height: 100%;
     width: 0%; /* JS will control this */
-    border-radius: 1em;
+    border-radius: 0;
     background-color: var(--accent-color, #ffffff);
     transition: width 1s ease-in-out, background-color 1s ease-in-out;
-    
+
     /* This makes the handle track the end of the bar */
     position: relative; 
 }
 
 .progress-text {
-	font-size: 0.7em;
-	opacity: 0.5;
+    font-size: 0.7em;
+    opacity: 0.5;
 }
+
 /* Nautilus 002 — прямі кути */
 #song-info-container,
 #album-art-container,
