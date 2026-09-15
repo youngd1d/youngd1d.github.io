@@ -11,13 +11,13 @@
 					"label": "Standard"
 				},
 				{
-  "value": "nautilus",
-  "label": "Nautilus"
-},
+					"value": "nautilus",
+					"label": "Nautilus"
+				},
 				{
-    "value": "Nautilus_002",
-    "label": "Nautilus 002"
-},
+					"value": "Nautilus_002",
+					"label": "Nautilus 002"
+				},
 				{
 					"value": "matte",
 					"label": "Matte (Light)"
@@ -65,8 +65,8 @@
 		{
 			"id": "font",
 			"label": "Font",
-            "description": "<a href=\"ms-settings:fonts\">Check installed fonts</a>",
-            "type": "font",
+			"description": "<a href=\"ms-settings:fonts\">Check installed fonts</a>",
+			"type": "font",
 			"defaultValue": "",
 			"group": "Appearance"
 		},
@@ -86,6 +86,17 @@
 			"type": "number",
 			"min": 0,
 			"defaultValue": 500,
+			"group": "Appearance"
+		},
+		{
+			"id": "albumArtSize",
+			"label": "Album Art Size",
+			"description": "Album art size in pixels. Used by Nautilus 002.",
+			"type": "number",
+			"min": 50,
+			"max": 300,
+			"step": 1,
+			"defaultValue": 100,
 			"group": "Appearance"
 		},
 		{
