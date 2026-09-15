@@ -11,6 +11,10 @@
 					"label": "Standard"
 				},
 				{
+  "value": "nautilus",
+  "label": "Nautilus"
+},
+				{
 					"value": "matte",
 					"label": "Matte (Light)"
 				},
