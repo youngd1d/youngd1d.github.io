@@ -15,6 +15,10 @@
   "label": "Nautilus"
 },
 				{
+    "value": "Nautilus_002",
+    "label": "Nautilus 002"
+},
+				{
 					"value": "matte",
 					"label": "Matte (Light)"
 				},
