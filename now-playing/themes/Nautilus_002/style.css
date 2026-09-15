@@ -1,6 +1,6 @@
 :root {
-    --border-radius: 20px;
-    --component-radius: calc(var(--border-radius) * 0.75);
+    --border-radius: 0px;
+    --component-radius: 0px;
 }
 
 #main-wrapper {
