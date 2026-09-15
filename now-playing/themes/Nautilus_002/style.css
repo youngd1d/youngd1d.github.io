@@ -1,184 +1,295 @@
 :root {
     --border-radius: 0px;
     --component-radius: 0px;
+
+    /* Керується через Album Art Size у Settings */
+    --album-art-size: 100px;
 }
+
+
+/* =========================================================
+   MAIN WRAPPER
+   Висота тепер НЕ залежить від розміру шрифту.
+   Її визначає Album Art Size.
+   ========================================================= */
 
 #main-wrapper {
     width: 500px;
+    height: var(--album-art-size);
+
     display: flex;
     flex-direction: row;
     align-items: stretch;
+
     gap: 0.5em;
+
     opacity: 0;
 }
 
+
+/* =========================================================
+   ALBUM ART
+   ========================================================= */
+
 #album-art-container {
-    /* 1. Tell it to maintain a 1:1 square ratio */
-    height: 100%;
-    aspect-ratio: 1 / 1;
+    width: var(--album-art-size);
+    height: var(--album-art-size);
+
+    flex: 0 0 var(--album-art-size);
+
     overflow: hidden;
+
     border-radius: var(--component-radius);
+
     position: relative;
+
     background-size: cover;
     background-position: center;
+
     display: var(--show-album-art);
+
     flex-shrink: 0;
 }
+
 
 #album-art-container.is-paused #album-art-layer,
 #album-art-container.is-paused #album-art-transition-layer {
     opacity: 0.2;
 }
 
+
 #pause-overlay {
     position: absolute;
+
     top: 0;
     left: 0;
+
     width: 100%;
     height: 100%;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     opacity: 0;
+
     pointer-events: none;
+
     transition: opacity 0.3s ease;
-    z-index: 10; 
+
+    z-index: 10;
+
     border-radius: inherit;
 }
 
+
 #pause-overlay svg {
-    height: 50%; 
+    height: 50%;
     width: auto;
 }
+
 
 #album-art-container.is-paused #pause-overlay {
     opacity: 1;
 }
 
+
 #album-art-layer,
 #album-art-transition-layer {
     position: absolute;
+
     top: 0;
     left: 0;
+
     width: 100%;
     height: 100%;
+
     background-size: cover;
     background-position: center;
+
     transition: opacity 0.5s ease;
 }
 
+
 #album-art-layer {
     z-index: 1;
+
     transition: all 0.5s ease;
 }
+
 
 #album-art-transition-layer {
     z-index: 0;
 }
 
+
+/* =========================================================
+   SONG INFO BLOCK
+   Висота жорстко дорівнює Album Art Size.
+   Великий Font Size більше НЕ збільшує висоту блока.
+   ========================================================= */
+
 #song-info-container {
     position: relative;
+
     flex: 1;
+
+    height: 100%;
+    min-height: 0;
+
+    box-sizing: border-box;
+
     display: flex;
     flex-direction: row;
     align-items: center;
+
     border-radius: var(--border-radius);
+
     overflow: hidden;
+
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+
     gap: 1.5em;
+
     padding: 0.75em 1em;
+
     transition: all 0.25s ease-in-out;
 }
 
-/* The background now fills the frame */
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
 #background-layer,
 #background-transition-layer {
     position: absolute;
+
     top: 0;
     left: 0;
+
     width: 100%;
     height: 100%;
+
     z-index: 1;
+
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
 
-    background-blend-mode: overlay; /* Or 'soft-light' for a subtler effect */
+    background-blend-mode: overlay;
+
     filter: blur(10px) brightness(0.3) saturate(1.2);
-    transform: scale(1.1); /* Slightly zoom in to cover edges when blurred */
+
+    transform: scale(1.1);
 }
+
 
 #background-layer {
     transition: all 0.5s ease;
 }
 
+
 #background-transition-layer {
     z-index: 0;
 }
 
-/* The content sits on top */
-#song-info-wrapper {
-    position: relative; /* Keeps it in the document flow */
-    z-index: 2;         /* Sits above the background-layer */
 
-    /* padding: 1em 1.75em; */
+/* =========================================================
+   TEXT AREA
+   ========================================================= */
+
+#song-info-wrapper {
+    position: relative;
+
+    z-index: 2;
+
     display: flex;
     flex-direction: column;
+
     gap: 0.3em;
 
     margin: 0.5em 0em;
 
     flex-grow: 1;
+
     min-width: 0;
+    min-height: 0;
 }
+
 
 #track-label {
     font-size: 1em;
     font-weight: 600;
+
     text-align: var(--text-alignment);
 }
+
 
 #artist-label {
     font-size: 0.8em;
     font-weight: 300;
+
     opacity: 0.6;
+
     text-align: var(--text-alignment);
 }
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
 
 #progress-container {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.2em;
-    margin-top: 0.2em;
+
     gap: 0.5em;
+
+    margin-top: 0.2em;
 }
+
 
 #progress-bar-track {
     width: 100%;
     height: 0.4em;
+
     border-radius: 0;
+
     background-color: #ffffff3a;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Adds depth */
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
+
 
 #progress-bar-fill {
     height: 100%;
-    width: 0%; /* JS will control this */
-    border-radius: 0;
-    background-color: var(--accent-color, #ffffff);
-    transition: width 1s ease-in-out, background-color 1s ease-in-out;
+    width: 0%;
 
-    /* This makes the handle track the end of the bar */
-    position: relative; 
+    border-radius: 0;
+
+    background-color: var(--accent-color, #ffffff);
+
+    transition:
+        width 1s ease-in-out,
+        background-color 1s ease-in-out;
+
+    position: relative;
 }
+
 
 .progress-text {
     font-size: 0.7em;
+
     opacity: 0.5;
 }
 
-/* Nautilus 002 — прямі кути */
+
+/* =========================================================
+   NAUTILUS 002 — ПРЯМІ КУТИ
+   ========================================================= */
+
 #song-info-container,
 #album-art-container,
 #album-art-layer,
