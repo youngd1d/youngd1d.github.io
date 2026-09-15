@@ -177,3 +177,11 @@
 	font-size: 0.7em;
 	opacity: 0.5;
 }
+/* Nautilus 002 — прямі кути */
+#song-info-container,
+#album-art-container,
+#album-art-layer,
+#album-art-transition-layer,
+#pause-overlay {
+    border-radius: 0 !important;
+}
